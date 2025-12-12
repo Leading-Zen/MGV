@@ -319,7 +319,7 @@ img {
 
 blockquote,
 .blockquote {
-    margin: 1.5rem 0 2.5rem 0;
+    margin: 1.5rem 0 1rem 0;
     font-style: italic;
     font-size: 24px;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -1274,7 +1274,7 @@ select {
 
 @media only screen and (max-width: 992px) {
     .navbar-nav {
-        background: #fff;
+        background: #D9D9D9;
         padding: 2rem 2rem;
         box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.08);
         -webkit-box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.08);
@@ -2333,7 +2333,7 @@ ul.products {
 .nav-links>.current {
     z-index: 2;
     color: #fff;
-    background-color: #3d404f;
+    background-color: #101935;
 }
 
 /* Other entry items */

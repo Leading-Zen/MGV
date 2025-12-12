@@ -1,61 +1,104 @@
 .absolute_header {
-    /* Fondo con el color y opacidad especificados: #101935 con opacidad E5 (229/255 = ~90% opacidad) */
-    background-color: #101935E5 !important; /* El !important puede ser necesario si otras clases de Bootstrap lo están sobrescribiendo. */
-    
-    /* Para que sea un "absolute header" y se superponga al contenido de la sección siguiente */
+    background-color: #101935E5 !important;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1030; /* Asegura que esté por encima de otros elementos */
+    z-index: 1030;
 }
 
 .absolute_header {
-  position: fixed; /* fija el header al viewport */
-  top: 0; /* alinea en la parte superior */
+  position: fixed; 
+  top: 0;
   left: 0;
-  width: 100%; /* que ocupe todo el ancho */
-  z-index: 9999; /* asegura que esté por encima de todo el contenido */
-  background-color: rgba(255, 255, 255, 0.98); /* fondo visible (ajústalo a tu tema) */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* efecto sutil al scrollear */
-  transition: all 0.3s ease-in-out; /* animación suave si cambia tamaño/color */
+  width: 100%; 
+  z-index: 9999; 
+  background-color: rgba(255, 255, 255, 0.98); 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease-in-out;
 }
 
-/* 🖋️ Estilos para el texto de la navegación */
 .navbar-nav .nav-link {
-    color: #FFFFFF !important; /* Texto de los enlaces en blanco */
-    font-weight: 600; /* Le da un poco más de cuerpo a la tipografía */
-    padding-right: 5px !important; /* Espacio entre los elementos del menú */
-    padding-left: 5px !important;
-    font-size: 18px;
+    color: #FFF; 
+    font-weight: 500; 
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    font-size: 16px !important;
 }
 
-/* 🖼️ Estilo para el Logo y el Texto del Logo */
 .navbar-brand {
-    display: flex; /* Para alinear el logo y el texto "DESIGN STUDIO" */
+    display: flex; 
     align-items: center;
 }
 
-/* 🟢 Estilos para el Botón "AGENDAR" */
 .btn-agendar {
-    /* Fondo del botón (el color celeste/verde agua de la imagen) */
-    background-color: #8db5c4; 
-    border-radius: 50px; /* Bordes redondeados */
-    color: #101935 !important; /* Color de texto más oscuro para el botón */
-    font-weight: bold;
+    background-color: #FFF; 
+    border-radius: 50px;
+    color: #101935;
     text-transform: uppercase;
     transition: background-color 0.3s;
     border: none;
-    line-height: 0.5 !important; /* Ajusta la altura del texto en el botón */
+}
+
+.agendar-header {
+  color: #101935 !important;
 }
 
 .btn-agendar:hover {
     background-color: #9ac2d0;
+    color: #FFF !important;
 }
 
+.nav-link:hover {
+  color: #9ac2d0 !important;
+}
+
+/* ---------- NAVBAR LAYOUT FIX (copy/paste) ---------- */
+
+/* 1) Base container: convertir header en flex y hacer referencia para absolute pos */
+.container-header {
+    position: relative;           /* necesario para el posicionamiento absoluto del botón */
+    display: flex;
+    align-items: center;          /* centra verticalmente logo, collapse, etc. */
+    gap: 20px;
+    padding: 0 24px;
+}
+
+/* 2) Logo: quitar márgenes negativos y definir tamaño fijo para mantener alineado */
 .etcodes-normal-logo {
-    width: 15%;
-    margin-left: -70px !important;
+    width: auto !important;
+    height: 70px;                /* ajusta si quieres más/menos alto */
+    margin: 0;
+    display: block;
+    object-fit: contain;
+    margin-left: -70px;
+}
+
+/* 3) Hacer que el contenedor del collapse ocupe el espacio central y centre el nav */
+.container-navbar {
+    flex: 1 1 auto;
+    display: flex !important;
+    justify-content: center;     /* centra el ul en el espacio disponible */
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* 4) Forzar que la lista de navegación sea un inline-flex para control y separación */
+.navbar-nav {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0px;                   /* espacio entre items - ajustar a preferencia */
+    padding-left: 0;
+    margin: 0;
+}
+
+/* 5) Normalizar altura y alineamiento vertical de los links */
+.navbar-nav .nav-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.6rem !important;
+    line-height: 1;
 }
 
 .texto-header {
@@ -156,13 +199,13 @@
   font-size: 26px;
 }
 
-/* Contenido del texto */
 .contact-text h5.widget-title {
   font-size: 18px;
   font-weight: 100 !important;
   color: #ccc;
   margin-bottom: 3px;
   text-align: left;
+  padding-top: 0px !important;
 }
 
 .contact-text p {
@@ -182,7 +225,6 @@
   margin-left: -80px;
 }
 
-/* Logo y redes */
 .footer-logo-section {
   background-color: #101935;
   padding-top: 40px;
@@ -378,16 +420,16 @@
 .whatsapp-float {
   position: fixed;
   bottom: 25px;
-  right: 25px;
-  background-color: #25D366; 
-  color: #fff;
-  border-radius: 50%;
+  right: 30px;
+  background-color: #46a037; 
+  color: #fff; 
+  border-radius: 25%;
   text-align: center;
   font-size: 28px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -395,8 +437,9 @@
 }
 
 .whatsapp-float:hover {
-  background-color: #1ebe5d;
+  background-color: #46a037;
   transform: scale(1.1);
+  color: #FFF;
 }
 
 .navbar-dark .navbar-toggler {
@@ -417,10 +460,14 @@
     padding-left: 20px !important;
   }
   .mb-2 {
-    font-size: 25px;
+    font-size: 23px;
   }
   .texto-mel {
-    font-size: 17px;
+    font-size: 14px;
+  }
+
+  .br-nos {
+    display: none;
   }
 }
 
@@ -433,25 +480,37 @@
     margin-bottom: 20px !important;
   }
   .texto-equipo {
-    font-size: 17px;
+    font-size: 14px;
+    padding: 0px 5px;
   }
   .nombre-test {
-    font-size: 22px !important;
+    font-size: 18px !important;
     margin-bottom: 5px !important; 
   }
   .descrip-test {
-    font-size: 20px !important;
+    font-size: 14px !important;
     margin-top: 0px !important;
   }
+
+  .banner-nos {
+    padding: 0px 10px;
+  }
 }
+
+.ai-agent-chat-avatar {
+    height: 70px !important; 
+    width: 70px !important;
+  }
 
 @media screen and (max-width:1024px) {
   .titulo-foot {
     font-size: 23px;
   }
   .texto-foot {
-    font-size: 18px; 
+    font-size: 14px; 
     text-align:center;
+    line-height: 1.5;
+    padding: 0px 10px;
   }
   .boton-nosotros {
     justify-content: center !important;
@@ -459,6 +518,48 @@
   .mb-30px {
     justify-content: center !important;
   }
+
+  .banner-nosotros {
+    padding-top: 40px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .carrusel-equipo-wrapper { 
+        display: flex;
+        flex-wrap: nowrap !important; /* CLAVE: Fuerza a todos los elementos a estar en una sola fila */
+        overflow-x: auto; /* Habilita la barra de desplazamiento horizontal */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-bottom: 5px; /* Asegura espacio para la barra de scroll */
+        -webkit-overflow-scrolling: touch; /* Mejora el rendimiento del scroll en iOS */
+        width: 100%; /* Asegura que ocupe el ancho completo */
+        
+        /* Opcional: Centra la alineación al detener el scroll */
+        scroll-snap-type: x mandatory; 
+    }
+
+    /* 2. Estilo de los Elementos Individuales (contenedor-equipo) */
+    .contenedor-equipo {
+        /* Anula las reglas de col-md-4 de Bootstrap en móvil */
+        flex: 0 0 100% !important; /* CLAVE: Cada tarjeta ocupa el 80% de la pantalla */
+        max-width: 100%;
+        margin-right: 20px; /* Espacio visible entre las tarjetas */
+        padding: 0px 40px !important;
+        
+        /* Opcional: Alineación específica para el scroll-snap */
+        scroll-snap-align: start; 
+    }
+    
+    /* 3. Ajuste de Estilos de Contenido Interno */
+    .team-image img {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* 4. Ajustar el ancho para que la tarjeta completa sea visible sin el margen derecho del row */
+    .carrusel-equipo-wrapper > .contenedor-equipo:last-child {
+        margin-right: 15px; /* Asegura que el último elemento también tenga espacio */
+    }
 }
 
 .mt-80px {
@@ -470,6 +571,10 @@
   max-width: 1140px;
   margin-right: auto !important;
   margin-left: auto !important;
+}
+
+.container-services {
+  margin-top: 0px !important; 
 }
 
 .imagen-diseño {
@@ -757,7 +862,7 @@
 }
 
 .bg-color-creamy {
-  background-color: #FFF8F1 !important;
+  background-color: #FFF9F4 !important;
   border: none !important;
   border-radius: 0 !important;
   display: flex !important;
@@ -1011,7 +1116,7 @@
 }
 
 .navbar-right {
-  margin-left: 350px;
+  margin-left: 380px;
 }
 
 .nosotros-header {
@@ -1074,7 +1179,7 @@
 }
 
 .bg-color-beige {
-  background-color: #FCFAED;
+  background-color: #FFF9F4;
 }
 
 .contenedor-agenda {
@@ -1273,7 +1378,7 @@
     display: flex; /* Usar Flexbox para alinear el contenido verticalmente */
     flex-direction: column;
     justify-content: space-between; /* Empuja el botón "Agendar asesoría" hacia abajo */
-}
+} 
 
 /* 6. Estilos específicos de Tipografía */
 .titulo1 {
@@ -1330,4 +1435,1294 @@
 
 .comentario-texto {
   font-size: 20px;
+} 
+
+/*banner header*/
+@media screen and (max-width:1024px) {
+
+  .contenedor-servicios .p-25px {
+    padding: 20px !important;
+    height: 220px !important;
+
+  }
+
+  .titulo-br {
+    display: none;
+  }
+
+  .contenedor-responsive {
+    margin-top: 100px;
+  }
+
+  .texto-diseno {
+    margin: 0px !important;
+    text-align: center !important;
+    font-size: 18px;
+    padding: 0px 10px;
+  }
+
+  .texto-pres {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center;
+    margin: 0px;
+    font-size: 14px;
+    padding: 0px 20px !important;
+  }
+
+  .boton-presentacion {
+    margin: 0px;
+    font-size: 14px;
+    padding: 12px 40px !important;
+    color: #FFFFFF;
+    background-color: #7FB9C7;
+    border: 0px;
+  }
+
+  .servicios-title {
+    margin: 0px; 
+    text-align: center;
+    font-size: 18px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .titulo-carrusel {
+    font-size: 18px !important; 
+    text-align: center;
+  }
+
+  .texto-carrusel {
+    font-size: 14px; 
+    text-align: center;
+  }
+
+  .texto-carrusel br {
+    display: none !important;
+    content: "" !important;
+  }
+
+  .texto-italic {
+    font-size: 14px; 
+    text-align: center;
+  }
+
+  .titulo-cali {
+    width: 100% !important;
+  }
+
+  .banner-title {
+    font-size: 30px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .banner-subtitle {
+    font-size: 20px !important; 
+    text-align: center;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+
+  .btn-whatsapp-banner {
+    font-size: 14px;
+    padding: 8px 10px;
+    padding: 8px 40px;
+  }
+
+  .btn-whatsapp-banner {
+    position: relative;
+    color: #101935 !important;
+    background-color: #FFFFFF;
+    border: 0px;     /* Ocultar texto visual */
+  }
+
+  .atencion-title {
+    font-size: 18px; 
+  }
+
+  .atencion-description {
+    font-size: 14px;
+  }
+
+  .horario-texto {
+    font-size: 14px !important;
+    font-weight: 100 !important;
+  }
+
+  .btn-agendar-mapa {
+    font-size: 14px;
+    text-transform: capitalize;
+    padding: 12px 40px !important;
+    align-items: center;
+    display: block !important;
+    margin: 0 auto !important;   /* centra horizontalmente */
+    text-align: center !important;
+    width: max-content; 
+    color: #000000;
+    background-color: #FFFFFF;
+  }
+
+  .pt-80px {
+    margin-top: 0px;
+    padding-bottom: 0px !important;
+  }
+
+  .testimonial-titulo {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 0px !important;
+  }
+
+  .margin-testimonial {
+    margin-bottom: 0px !important;
+  }
+
+  .padding-testimonial {
+    padding-top: 40px !important;
+  }
+
+  .testimonials .owl-dots {
+    display: none !important;
+  }
+
+  .testimonials .testimonial p {
+    font-size: 14px;
+  }
+
+  .client-job {
+    font-size: 14px;
+  }
+
+  .client-name {
+    font-size: 14px;
+  }
+
+  .blog-title  {
+    font-size: 20px; 
+    text-align: center; 
+  }
+
+  .blog-description {
+    font-size: 14px;
+    text-align: center;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block;
+  }
+
+  .container-blog {
+    margin: 35px !important;
+  }
+
+  .stander_blog_single_post {
+    margin: 0px 30px;
+  }
+ 
+  .mb-15px {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .banner-agenda {
+    font-size: 14px;
+    text-align: center;
+    padding: 0px 10px !important;
+  }
+
+  .boton-nosotros {
+    font-size: 14px;
+    text-align: center;
+    padding: 12px 40px;
+    color: #FFFFFF;
+    background-color: #7FB9C7;
+    border: 0px;
+  }
+
+  .br-blog {
+    display: none;
+  }
+
+  .foote-banner {
+    padding-top: 50px;
+  }
+
+  .container-testimonial {
+    padding: 0px 25px !important;
+  }
+
+  .col-sm-4.col-xs-12 {
+      display: flex !important;
+      justify-content: center !important;
+  }
+
+  .boton-blog {
+    display: block !important;
+    margin: 0 auto !important;
+    width: max-content;
+    font-size: 14px;
+    padding: 12px 40px;
+    margin-left: 0px !important;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color:#FFFFFF;
+    background-color: #7FB9C7;
+    border: 0px;
+  }
+
+  .contenedor-blog {
+    padding: 0px;
+  }
+
+  .footer-description {
+    font-size: 10px;
+    text-align: center;
+    width: 100%;
+    padding: 0px !important;
+  }
+
+  .description-copyright {
+    font-size: 10px; 
+    text-align: center;
+  }
+
+  .icon-circle {
+    display: none;
+  }
+
+  .contact-text h5.widget-title {
+    font-size: 14px;
+    text-align: center;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+
+  .contact-text p {
+    font-size: 14px;
+    text-align: center; 
+    margin: 0px;
+  }
+
+  .email-footer {
+    margin: 0px;
+  }
+
+  .ubi-footer {
+    margin: 0px;
+  }
+
+  .footer-contact-bar {
+    border-bottom-left-radius: 90px;
+    border-bottom-right-radius: 90px;
+  }
+
+  .footer-info {
+    margin-bottom: 10px !important;
+  }
+
+  .footer-info-last {
+    margin-bottom: 5px !important;
+  }
+
+  .br-mobile {
+    display: inline !important;
+  }
+
+  .footer-logo {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    position: static !important;
+    width: auto !important; /* o el que necesites */
+    height: 56px !important;
+  }
+
+  .container {
+    padding: 0px;
+  }
+
+  .pad-blog {
+    padding: 0px !important;
+  }
+
+  .post_title {
+    font-size: 18px;
+  }
+
+  .blog-date {
+    font-size: 14px;
+  }
+
+  .blog-parrafo {
+    font-size: 14px;
+  }
+
+  .mobile-scroll-wrapper {
+        display: flex !important;
+        flex-wrap: nowrap !important; /* Evita que se pongan uno encima de otro */
+        overflow-x: auto; /* Habilita el scroll horizontal */
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iPhones */
+        padding-bottom: 20px; /* Espacio para que no se corte la sombra si tienes */
+        gap: 15px; /* Espacio entre cada tarjeta */
+    }
+
+    /* Ajustamos el ancho de los items individuales */
+    .mobile-scroll-wrapper .pad-blog {
+        /* Importante: flex: 0 0 X% define que no se estire ni se encoja */
+        /* Usamos 85% para que se vea un pedacito de la siguiente tarjeta 
+           y el usuario sepa que debe hacer scroll */
+        flex: 0 0 100%; 
+        max-width: 100%;
+        display: block; /* Aseguramos comportamiento de bloque */
+    }
+  
+  .margin-blog {
+    margin-top: 0px !important;
+  }
+
+  horario-texto {
+    font-weight: 100 !important;
+  }
+
+  .boton-carrusel {
+    font-size: 14px !important;
+    padding: 12px 40px;
+    margin: 0px !important;
+    text-align: center;
+    color: #000000 !important;
+    background-color: #FFFFFF;
+    border: 0px;
+  }
+
+  .forzar-br::after {
+        content: "";
+        display: block;
+        height: 25px; /* espacio */
+        width: 100%;
+    }
+
+    .mobile-scroll-wrapper {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 20px;
+        gap: 15px;
+        /* Esto hace que al soltar el dedo, el scroll se "pegue" a la tarjeta */
+        scroll-snap-type: x mandatory; 
+    }
+
+    /* Ojo: Aquí cambiamos '.pad-blog' por '.contenedor-diseno' */
+    .mobile-scroll-wrapper .contenedor-diseno {
+        /* Tu configuración de 100% width */
+        flex: 0 0 100%; 
+        max-width: 100%;
+        display: block; 
+        
+        /* Esto alinea la tarjeta al centro del contenedor al hacer snap */
+        scroll-snap-align: center; 
+    }
+
+    .texto-header {
+      font-size: 35px !important; 
+      text-align: center;
+      margin: 0px !important;
+      padding: 0px 14px;
+    }
+
+    .texto-header2 {
+      font-size: 18px !important;
+      margin: 0px !important;
+      padding: 0px !important;
+      text-align: center;
+    }
+
+    .contenedor-servicios {
+    /* Forzar el comportamiento de bloque/apilado y que la altura sea automática */
+    display: block !important; 
+    flex-direction: column !important;
+    height: auto !important; /* CLAVE: La tarjeta crece con el contenido */
+    overflow: visible !important; /* Asegura que el texto y el botón no se corten */
+    border: 1px solid #e0e0e0; /* Opcional: Borde de tarjeta sutil */
 }
+
+/* 2. Ajuste de las columnas (Imagen y Contenido) para que ocupen todo el ancho */
+.contenedor-servicios > div[class*="col-md-6"] {
+    flex: 0 0 100% !important; /* Ocupa el 100% del contenedor padre */
+    max-width: 100% !important;
+    padding: 0 !important; /* Elimina cualquier padding lateral no deseado en la columna de imagen */
+}
+
+/* 3. Estilo de la imagen */
+.contenedor-servicios img {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: auto; /* Mantiene la proporción para que la imagen se vea bien */
+    display: block;
+    object-fit: cover;
+}
+
+/* 4. Estilo del área de texto y botón */
+.p-25px {
+    padding: 20px 25px !important; /* Ajuste de espaciado para el contenido de texto */
+    height: auto !important; /* Asegura que el contenido fluya y no se corte */
+}
+
+/* 5. Estilo del botón (Blanco con borde oscuro, como en la imagen 2) */
+.boton3 {
+    background-color: #7FB9C7; 
+    color: #FFFFFF; /* Texto oscuro */
+    border: 0px;
+    text-align: center;
+    display: inline-block;
+    width: auto;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.titulo1 {
+  font-size: 14px !important;
+}
+
+.texto1 {
+  font-size: 14px !important;
+}
+
+.contenedor-diseno {
+  padding: 40px !important;
+  margin-bottom: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.margin-contact {
+  margin-bottom: 40px !important;
+}
+
+.br-forzado {
+  display: none;
+}
+
+.texto-header2 {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+
+        font-size: 18px;
+        line-height: 1;
+        text-align: center;
+        margin-top: 20px;
+        padding: 0 10px !important; 
+    }
+
+    /* Aumenta el alto del slider */
+    #default-carousel .owl-carousel-item,
+    #default-carousel .owl-carousel-item-content {
+        min-height: 200px !important; /* Ajustable */
+        height: auto !important;
+        padding-top: 0px;
+        padding-bottom: 0px !important;
+    }
+
+    /* Centrar el título */
+    .texto-header {
+        text-align: center !important;
+        font-size: 32px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 20px !important;
+        padding: 0 20px;
+    }
+
+    /* Centrar botón y darle espacio */
+    .boton-carrusel {
+        display: block;
+        margin: 30px auto 0 auto !important;
+        text-align: center;
+        width: fit-content;
+    }
+
+    /* Ajustar imagen de fondo */
+    .bg-image img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        min-height: 500px !important;
+    }
+
+    .titulo-nosotros {
+      font-size: 60px;
+    }
+
+    .subtitulo-nosotros {
+      display: none;
+    }
+
+    .titulo-sobre {
+      font-size: 18px;
+      text-align: center;
+      padding: 0px 10px;
+    }
+
+    .texto-relleno {
+      font-size: 14px; 
+      text-align: center;
+      margin-bottom: 0px;
+    }
+
+    .contenedor-nosotros {
+      margin-top: 40px !important;
+      margin-bottom: 40px !important;
+    }
+
+    .blockquote-footer {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .equipo-nos {
+      font-size: 20px !important;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .contenedor-team {
+      padding-bottom: 0px !important;
+    }
+
+    .titulo-servicios {
+      font-size: 60px;
+    }
+
+    .titulo-serv {
+      font-size: 14px; 
+      margin-top: 30px;
+    }
+ 
+    .texto-servicio1 {
+      font-size: 14px;
+    }
+
+    .texto-cotizacion {
+      font-size: 12px;
+    }
+
+    .boton-servicios {
+      font-size: 14px;
+      margin-top: 5px;
+      margin-bottom: 40px;
+      margin-top: 25px;
+      padding: 12px 40px;
+      color: #FFFFFF; 
+      background-color: #7FB9C7;
+      border: 0px;
+    }
+
+    .cont-servi {
+      padding: 0px 20px;
+    }
+
+    .preguntas-texto {
+      font-size: 20px;
+      padding-left: 20px;
+    }
+
+    .pregunta-servicios {
+      font-size: 18px; 
+      padding: 0px 20px;
+    }
+
+    .respuesta-servicios {
+      font-size: 14px;
+      padding: 20px !important;
+    }
+
+    .post_meta_date  {
+      font-size: 14px;
+    }
+
+    .parr-blog {
+      font-size: 14px;
+    }
+
+    .blog_posts article  {
+      margin-bottom: 20px;
+    }
+
+    .contenedor-articulo {
+      padding: 0px !important;
+    }
+
+    .pagination {
+      justify-content: center !important;
+      margin-top: 20px !important; 
+      margin-bottom: 30px !important;
+    }
+
+    .sidebar-blog {
+      padding: 0px !important;
+    }
+
+    .widget-title {
+      font-size: 18px;
+    }
+
+    .post-simple-list .reveal-title {
+      font-size: 25px;
+      font-weight: 600;
+    }
+
+    .cuerpo-tips {
+      font-size: 14px;
+    }
+
+    .contenedor-widget {
+      padding-left: 20px !important;
+      padding-right: 10px !important;
+    }
+
+    .whatsapp-title {
+      font-size: 18px;
+    }
+
+    .whatsapp-text {
+      font-size: 14px;
+    }
+
+    .page-container {
+      padding: 0px !important;
+    }
+
+    .whatsapp-number {
+      font-size: 30px;
+    }
+
+    .cont-art11 {
+      padding: 0px !important;
+    }
+
+    .whatsapp-icon-widget {
+      color: #29A71A;
+      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);;
+    }
+
+    .titulo-art1 {
+      font-size: 30px;
+      text-align: center;
+      padding: 0px !important;
+      margin: 0px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .articulo1-princ {
+      display: none;
+    }
+
+    .titulo-blogart1 {
+      font-size: 18px !important;
+    }
+
+    .parrafo1-art1 {
+      font-size: 14px;
+    }
+
+    .forzar-art1 {
+      display: none;
+    }
+
+    .contenedor-art1 {
+      padding: 0px !important;
+    }
+
+    .quote-blog1 {
+      font-size: 21px;
+      width: 100% !important;
+      padding: 0px !important;
+      font-weight: 500 !important;
+    }
+
+    .contenido-blog {
+      font-size: 14px;
+    }
+
+    .img1-art1 {
+      margin: 0px !important;
+    }
+
+    .contenido-blog1 {
+      font-size: 14px;
+      margin-top: -70px;
+    }
+
+    .blog-post-tags li a  {
+      font-size: 14px;
+      justify-content: left !important;
+      text-align: left !important;
+      align-items: left !important;
+    }
+
+    .post_read_more_btn, .post_read_more_btn  {
+      padding: 10px !important;
+    }
+
+    .boton-izquierda {
+      padding: 10px 8px 10px 10px !important;
+    } 
+
+    .sidebar-art1 {
+      padding: 0px !important;
+      margin: 0px 30px;
+    }
+
+    /* 1. Aplicar Flexbox al contenedor de la fila (div.row) */
+    .post_meta_bottom .row {
+        display: flex;
+        flex-direction: column; /* Apila los elementos verticalmente para móvil */
+    }
+
+    /* 2. Reordenar las columnas (col-lg-6) usando la propiedad 'order' */
+
+    /* Columna de las flechas (Navegación) */
+    /* Este es el segundo div.col-lg-6 en el HTML */
+    .post_meta_bottom .row .col-lg-6:last-child {
+        order: 1; /* Poner las flechas en primer lugar */
+        
+        /* Opcional: Ajustar el margen inferior en móvil */
+        margin-bottom: 20px !important; 
+    }
+    
+    .post_meta_bottom .row .col-lg-6:first-child {
+        order: 2; /* Poner las tags en segundo lugar */
+        
+        /* Asegurarse de que el margen inferior de Bootstrap (mb-10px mb-lg-0) se mantenga */
+        margin-bottom: 10px !important; 
+    }
+
+    .navegacion-articulo-mobile {
+        position: relative;
+        width: 100%;
+        height: 50px; /* ajustable */
+    }
+
+    /* Flecha izquierda */
+    .boton-izquierda {
+        position: absolute !important; 
+        left: 20px !important;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* Flecha derecha */
+    .boton-derecha {
+        position: absolute !important;
+        right: 20px !important;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .col-lg-6.text-center.text-lg-right {
+    position: relative !important;     /* referencia para posicion absolute de las flechas */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    min-height: 56px;                  /* asegura altura para centrar verticalmente */
+  }
+
+  /* Botones: forzar tamaño y quitar márgenes heredados */
+  .col-lg-6.text-center.text-lg-right .post_read_more_btn {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;              /* ANULA mr-2 / ml-2 */
+    padding: 0 !important;
+    border-radius: 0px !important;
+    background: #ffffff !important;    /* o el color que uses */
+    border: 0px !important; /* ajustar estilo si quieres */
+    box-sizing: border-box !important;
+    z-index: 5 !important;
+    background-color: #DDDDE4 !important;
+  }
+
+  /* Asegura que el icono no aporte margen extra */
+  .col-lg-6.text-center.text-lg-right .post_read_more_btn i {
+    margin: 0 !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+  }
+
+  /* Posicionar la primera y la segunda botón a 20px de cada borde */
+  .col-lg-6.text-center.text-lg-right .post_read_more_btn:first-of-type {
+    left: 20px !important;
+  }
+
+  .col-lg-6.text-center.text-lg-right .post_read_more_btn:last-of-type {
+    right: 20px !important;
+  }
+
+  /* Si hay variaciones en HTML (clases extra para izquierda/derecha), cubrirlas también */
+  .boton-izquierda { left: 20px !important; }
+  .boton-derecha  { right: 20px !important; }
+
+  .contenedor-tags {
+    width: 100% !important;
+    padding-left: 20px !important;    /* <-- 20px desde el borde izquierdo */
+    padding-right: 0 !important;
+    text-align: left !important;
+  }
+
+  /* lista: quitar cualquier comportamiento flex y asegurarnos que cada li sea su propia línea */
+  .contenedor-tags .blog-post-tags {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  } 
+ 
+  /* cada tag en su línea */
+  .contenedor-tags .blog-post-tags li {
+    display: block !important;
+    margin: 0 0 0px 0 !important;     /* espacio entre tags (ajusta si quieres más/menos) */
+  }
+
+  /* estilo del enlace dentro del tag: apariencia como en la referencia */
+  .contenedor-tags .blog-post-tags li a {
+    display: inline-block !important;  /* ocupa solo el ancho de su texto */
+    padding: 8px 18px !important;     /* espaciado interno (ajustable) */
+    background: #E8E6EB !important;    /* fondo gris-lavanda claro similar a tu referencia */
+    color: #6b6773 !important;         /* color del texto */
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+    border-radius: 2px !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    width: auto !important;            /* que no se estire a todo el ancho */
+  }
+
+  /* Si tu diseño aplica márgenes o floats al padre, los anulamos aquí solo en mobile */
+  .contenedor-tags,
+  .contenedor-tags .blog-post-tags,
+  .contenedor-tags .blog-post-tags li {
+    float: none !important;
+  }
+
+  .nombre-blog {
+    font-size: 18px;
+  }
+
+  .fecha-blog {
+    font-size: 10px;
+    font-weight: 300;
+    margin-left: 17px;
+  }
+
+  .comentario-art1 {
+    font-size: 14px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+
+  .comentario-texto {
+    font-size: 18px;
+  }
+
+  .widget {
+    padding-bottom: 10px;
+  }
+
+  .container-blog {
+        /* Fuerza padding lateral a 0 para que la imagen toque los bordes */
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* 2. Anular el padding/margen de la fila y la columna */
+    .contenedor-art1 > .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .contenedor-art1 > .row > .col-md-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* 3. Definir la altura y el ancho del contenedor de la imagen */
+    .post_img.imagen-art1 {
+        /* Ocupa el 100% del ancho del viewport */
+        width: 100% !important; 
+        /* Define una altura fija (ej. 350px) o una altura relativa al viewport (ej. 50vh) */
+        height: 400px; /* Puedes ajustar este valor según la altura deseada */
+        /* Para asegurar que no haya desbordamiento horizontal */
+        overflow: hidden; 
+    }
+
+    /* 4. Asegurar que la imagen cubra el contenedor sin distorsionarse */ 
+    .post_img.imagen-art1 img {
+        width: 100%;
+        height: 100%; /* ESTO CAUSA PROBLEMAS DE PROPORCIÓN/RECORTE */
+        object-fit: cover; /* ESTO CAUSA RECORTE */
+        display: block;
+    }
+
+    .intro-art2 {
+      display: none;
+    }
+
+    .contenedor-art2 {
+      padding: 0px !important;
+    }
+
+    .contenedor-descrip {
+      padding: 10px !important;
+    }
+
+    .imagen-art2 {
+      margin-bottom: 0px !important;
+    }
+
+    .title-contact {
+      font-size: 60px;
+    }
+
+    .texto-contacto  {
+      font-size: 14px;
+      margin:0px !important;
+      width: 100% !important;
+      padding: 0px !important;
+      max-width: 100%;
+    }
+
+    .cont-contact {
+      padding: 0px !important;
+    }
+
+    .titulo-card {
+      font-size: 18px;
+    }
+
+    .texto-card { 
+      font-size: 16px;
+    }
+
+    .mapa-contact {
+      padding: 0px !important;
+      margin: 0px !important;
+    }
+
+    .bg-img-9 {
+      margin-bottom: 0px !important;
+    }
+
+    .container-header {
+        display: flex;
+        align-items: center; 
+        /* Usamos space-between para empujar el logo a la izquierda y los botones a la derecha */
+        justify-content: space-between; 
+        /* Aseguramos que el logo no tenga margen a la derecha y los botones no tengan margen a la izquierda */
+        padding-left: 15px; /* Asegura un padding base si lo quitaste antes */
+        padding-right: 15px; 
+    }
+    
+    /* 2. El Ícono del Calendario */
+    .calendar-icon-mobile {
+        /* Mantenemos tus estilos de tamaño */
+        background-color: white;
+        border-radius: 50%;
+        padding: 16px 16px; 
+        color: #172D4D; 
+        display: inline-block !important; 
+        vertical-align: middle; 
+        line-height: 1; 
+        
+        /* === CLAVE DE LA CORRECCIÓN === */
+        /* Eliminamos el margin-right que estaba en 0px */
+        /* Usamos margin-left: auto para empujar el ícono hacia el extremo derecho, */
+        /* dejando espacio para el botón de hamburguesa que le sigue. */
+        margin-left: auto; 
+        
+        /* Ajustamos el margen DERECHO para reducir el espacio con el botón de hamburguesa */
+        /* Prueba con un valor pequeño, por ejemplo, 5px, o un valor negativo si es necesario */
+        margin-right: 5px !important; 
+        
+        /* Forzamos que la altura y el ancho sean iguales para un círculo perfecto */
+        height: 50px; 
+        width: 50px;
+        text-align: center; /* Centrar el icono internamente */
+    }
+    
+    /* 3. Ajuste del Botón de Hamburguesa */
+    /* Lo acercamos más al calendario anulando cualquier margen de Bootstrap */
+    .navbar-toggler.hamburger-menu-btn {
+        margin-left: 0 !important; 
+        padding-right: 0 !important;
+    }
+
+    .carru1 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        /* Asegura que ocupe todo el ancho disponible */
+        width: 100% !important; 
+    }
+
+    /* 2. Estilos para la imagen dentro de la columna */
+    .carru1 img {
+        /* Fuerza al 100% del ancho de la columna (que ahora es 100% del viewport) */
+        width: 100%; 
+        
+        /* Definimos una altura específica para que se vea más grande (ajusta este valor) */
+        /* Usamos object-fit: cover para que la imagen cubra el área sin distorsionarse, aunque puede recortarse */
+        height: 400px; /* Ejemplo de altura prominente. Ajusta este valor. */
+        object-fit: cover; 
+        display: block;
+    }
+
+    .titulo-mobile-bar {
+        /* Hacemos la barra visible en modo responsive */
+        display: block !important;
+        /* Color de fondo gris claro de la referencia */
+        background-color: #ECECEC; 
+        /* Padding vertical para darle altura */
+        padding: 15px 0; 
+        width: 100%; 
+        position: relative; 
+        z-index: 999;
+    }
+
+    /* Estilos para el texto del título */
+    .titulo-mobile-bar .titulo-mobile-texto {
+        /* Tamaño de fuente prominente */
+        font-size: 20px; 
+        /* Peso de la fuente (puedes ajustar entre 500 y 700) */
+        font-weight: 600; 
+        /* Color de texto oscuro */
+        color: #333; 
+        margin-bottom: 0;
+        /* Centrar el texto */
+        text-align: center; 
+    }
+}
+
+
+.br-mobile {
+  display:none;
+}
+
+/* ----------------------------- */
+/*  NAVBAR RESPONSIVE FIX       */
+/* ----------------------------- */
+@media (max-width: 992px) {
+
+    /* Ajuste general del header */
+    .absolute_header {
+        background-color: #101935 !important;
+        padding: 15px 0;
+        position: relative;
+        z-index: 9999;
+    }
+
+    /* Botón hamburguesa visible */
+    .navbar-toggler {
+        border: none;
+        outline: none !important;
+        box-shadow: none !important;
+        color: #fff;
+        font-size: 1.5rem;
+    }
+
+    .hamburger-menu-btn {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    z-index: 11000 !important;
+    position: relative;
+  }
+  .hamburger-menu-btn span { 
+    display:inline; } /* ocultar texto si existe */
+
+  /* Panel pequeño flotante (reemplaza la regla fixed/100%) */
+  .navbar-collapse {
+    position: absolute !important;
+    top: 1px !important;
+    right: 1px !important;
+    width: 250px !important; 
+    height: auto !important;
+    max-height: calc(100vh - 90px) !important;
+    overflow-y: auto !important;
+    padding: 0px !important;
+    border-radius: 0px !important;
+    transform: translateY(-6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .22s ease, transform .22s ease, visibility .22s;
+    z-index: 10990 !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Estado abierto: aparecer como dropdown (mantener .show de bootstrap) */
+  .navbar-collapse.show {
+    right: 12px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Asegura que el backdrop (si existe) no cubra el header logo */
+  .navbar-collapse + .modal-backdrop,
+  .modal-backdrop {
+    z-index: 10980 !important;
+  }
+
+  /* Lista vertical dentro del panel */
+  .navbar-nav {
+    display: block !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Enlaces: tipografía, color y espaciado como referencia */
+  .navbar-nav .nav-link {
+    display: block !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    color: #757993 !important; /* gris-azulado */
+    font-weight: 400 !important;
+    padding: 0px 0 !important;
+    text-decoration: none !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* Separador fino debajo de cada opción */
+  .navbar-nav .nav-link::after {
+    content: "" !important; 
+    display: block !important;
+    margin-top: 10px !important;
+    height: 1px !important;
+    width: 100% !important;
+    background: rgba(120,125,140,0.22) !important; /* línea sutil */
+  }
+
+  /* Elimina separador del último enlace visible (Contacto) */
+  .navbar-nav li:nth-last-child(2) .nav-link::after,
+  .navbar-nav li:last-child .nav-link::after {
+    display: none !important;
+  }
+
+  /* Ocultar botón AGENDAR en la versión móvil (como en referencia) */
+  .btn-agendar,
+  .agendar-header {
+    display: none !important;
+  }
+
+  /* Ajustes para evitar que el contenido detrás se desplace al abrir */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Si tu framework añade padding al .container-header, asegúrate que logo permanezca visible */
+  .container-header {
+    position: relative;
+    z-index: 11100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Scrollbar sutil en el panel (no obligatorio) */
+  .navbar-collapse::-webkit-scrollbar { width: 8px; }
+  .navbar-collapse::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.06);
+    border-radius: 8px;
+  }
+
+    /* Estilos de los links */
+    .navbar-nav .nav-link {
+        color: #757993 !important;
+        font-size: 1.2rem;
+        padding: 10px !important; 
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    /* Botón AGENDAR dentro del menú */ 
+    .agendar-header {
+        display: block;
+        background: #101935;
+        color: #fff !important;
+        text-align: center;
+        border-radius: 40px;
+        margin-top: 25px; 
+        padding: 15px 25px !important;
+    } 
+
+    .container-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .boton-detalles {
+      text-align: center; 
+      justify-content: center; 
+      align-items: center;
+      margin: 0 !important;
+      font-size: 14px;
+      padding: 12px 40px !important;
+      color: #FFFFFF;
+      background-color: #7FB9C7;
+      border: 0px;
+    }
+
+    .boton-blog {
+      text-align: center;  
+      justify-content: center; 
+      align-items: center;
+      margin: 0 !important;
+    }
+
+    .navbar-dark .navbar-toggler {
+      color: #FFF !important;
+      margin-right: 20px;
+    }
+
+    .etcodes-normal-logo {
+    width: auto !important;
+    height: 50px;                /* ajusta si quieres más/menos alto */
+    margin: 0;
+    display: block;
+    object-fit: contain;
+    margin-left: 20px;
+}
+}
+
+@media (max-width: 768px) {
+  html, body {
+    /* Si esto oculta algo legítimo en tu sitio, quita esta regla y avísame:
+       la mantengo porque en muchas plantillas el menú drawer provoca desplazamiento. */
+    overflow-x: hidden;
+  }
+}
+
+/* 3) Ajustes más agresivos para pantallas muy pequeñas (evita que el botón ocupe ancho) */
+@media screen and (max-width: 480px) {
+  .whatsapp-float {
+    right: 14px !important;
+    bottom: 14px !important;
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 22px !important;
+    box-shadow: 0 3px 8px rgba(0,0,0,.25);
+  }
+
+  .whatsapp-float:hover,
+  .whatsapp-float:focus {
+    transform: scale(1.05);
+  }
+} 
